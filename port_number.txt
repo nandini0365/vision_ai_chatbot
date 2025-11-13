@@ -1,0 +1,10 @@
+python -m http.server 8000
+http://localhost:8000/
+
+also there was a feature earlier where it returned whether to use our feature eye analyser or retina analyser or whether to go for doctor based on wellness checks and symptoms . now can you add it to current version. Also at the end if the user says "that's all " or something similar to it then tell " Thank you for using VisionAi . if you have any questions please free to ask!" . also remove the rectangles "that's all" and "wellness check" completely. wellness check button should be at the top only as it is right now.
+
+
+also if the user matches with any of these symptoms then also it should predict and give the output
+
+also if incase the user wishes with hello or something similar and then nothing please replay with "Hello how are you doing...." add you own lines . and then proceed 
+

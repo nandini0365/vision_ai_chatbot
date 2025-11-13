@@ -1,0 +1,13 @@
+visionai-chatbot/
+├── backend/
+│   ├── chatbot_api.py
+│   ├── requirements.txt
+│   └── qa_data.json
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   └── Chatbot.js
+│   │   └── App.js
+│   ├── package.json
+│   └── tailwind.config.js
+└── README.md
