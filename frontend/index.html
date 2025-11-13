@@ -54,7 +54,7 @@
         right: 20px;
         width: 60px;
         height: 60px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: #af8fe9;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -78,13 +78,13 @@
 
       @keyframes pulse {
         0% {
-          box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+          box-shadow: 0 0 0 0 rgba(175, 143, 233, 0.7);
         }
         70% {
-          box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+          box-shadow: 0 0 0 10px rgba(175, 143, 233, 0);
         }
         100% {
-          box-shadow: 0 0 0 0 rgba(102, 126, 234, 0);
+          box-shadow: 0 0 0 0 rgba(175, 143, 233, 0);
         }
       }
 
@@ -92,51 +92,72 @@
       #mainContent {
         display: none;
       }
+
+      /* Custom purple color */
+      .bg-custom-purple {
+        background-color: #af8fe9;
+      }
+      .bg-custom-purple-dark {
+        background-color: #9b7bd6;
+      }
+      .text-custom-purple {
+        color: #7d5bbf;
+      }
+      .border-custom-purple {
+        border-color: #af8fe9;
+      }
+      .bg-custom-purple-light {
+        background-color: #f5f1fd;
+      }
+      .focus-ring-custom-purple:focus {
+        --tw-ring-color: #af8fe9;
+      }
     </style>
   </head>
-  <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen py-8">
+  <body class="bg-white min-h-screen py-8">
     <!-- Chatbot Icon -->
     <div id="chatbotIcon" onclick="toggleChatInterface()">
       <i class="fas fa-robot"></i>
     </div>
 
     <!-- Main Content (Initially Hidden) -->
-    <div id="mainContent" class="max-w-6xl mx-auto">
-      <!-- Simple Header -->
-      <!-- <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold text-blue-800">
-          👁️ VisionAI Eye Care Assistant
-        </h1>
-        <p class="text-blue-600 mt-2">
-          Comprehensive Eye Health Analysis & Disease Information
-        </p>
-      </div> -->
-
+    <div id="mainContent" class="max-w-3xl mx-auto">
       <!-- Main Chat Container -->
       <div
-        class="bg-white rounded-lg shadow-lg h-[65vh] flex flex-col mx-4 mb-8"
+        class="bg-white rounded-lg shadow-lg h-[90vh] flex flex-col mx-4 mb-8"
       >
         <!-- Chat Header -->
-        <div
-          class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 rounded-t-lg"
-        >
+        <div class="bg-custom-purple text-white p-4 rounded-t-lg">
           <div class="flex justify-between items-center">
             <div>
               <h2 class="text-xl font-bold">👁️ VisionAI Assistant</h2>
-              <p class="text-blue-100 text-sm">
-                Symptom Analysis • Disease Info • Wellness Check
+              <p class="text-purple-100 text-sm">
+                Hi! I'm your Vision AI assistant. Ask me anything about eye
+                health!
               </p>
             </div>
             <div class="flex space-x-2">
               <button
+                onclick="showAnalyzerInfo('eye')"
+                class="bg-white text-custom-purple px-3 py-1 rounded-lg text-sm font-semibold hover:bg-purple-50 transition-colors"
+              >
+                <i class="fas fa-eye mr-1"></i> Eye Analyzer
+              </button>
+              <button
+                onclick="showAnalyzerInfo('retina')"
+                class="bg-white text-custom-purple px-3 py-1 rounded-lg text-sm font-semibold hover:bg-purple-50 transition-colors"
+              >
+                <i class="fas fa-crosshairs mr-1"></i> Retina Analyzer
+              </button>
+              <button
                 onclick="startWellnessCheck()"
-                class="bg-white text-blue-600 px-3 py-1 rounded-lg text-sm font-semibold hover:bg-blue-50 transition-colors"
+                class="bg-white text-custom-purple px-3 py-1 rounded-lg text-sm font-semibold hover:bg-purple-50 transition-colors"
               >
                 <i class="fas fa-heartbeat mr-1"></i> Wellness Check
               </button>
               <button
                 onclick="toggleChatInterface()"
-                class="bg-white text-blue-600 px-3 py-1 rounded-lg text-sm font-semibold hover:bg-blue-50 transition-colors"
+                class="bg-white text-custom-purple px-3 py-1 rounded-lg text-sm font-semibold hover:bg-purple-50 transition-colors"
               >
                 <i class="fas fa-times mr-1"></i> Close
               </button>
@@ -149,7 +170,7 @@
           <!-- Initial Welcome Message -->
           <div class="flex justify-start fade-in">
             <div
-              class="bg-blue-50 text-blue-800 px-4 py-3 rounded-lg rounded-bl-none max-w-xs lg:max-w-2xl border border-blue-200"
+              class="bg-custom-purple-light text-gray-800 px-4 py-3 rounded-lg rounded-bl-none max-w-xs lg:max-w-2xl border border-custom-purple"
             >
               <div class="font-semibold mb-2">
                 Hello! How are you doing today? 👋
@@ -203,12 +224,12 @@
           <!-- Symptom Analysis Section (Initially Hidden) -->
           <div
             id="symptomAnalysisSection"
-            class="hidden mb-4 bg-white p-4 rounded-lg border border-blue-200 relative"
+            class="hidden mb-4 bg-white p-4 rounded-lg border border-custom-purple relative"
           >
             <div class="flex justify-between items-center mb-3">
               <div
                 id="symptomProgress"
-                class="text-sm text-blue-600 font-semibold"
+                class="text-sm text-custom-purple font-semibold"
               ></div>
               <button
                 onclick="closeSymptomAnalysis()"
@@ -235,12 +256,12 @@
                 type="text"
                 id="messageInput"
                 placeholder="Describe symptoms or ask about eye conditions..."
-                class="flex-1 border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                class="flex-1 border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-custom-purple focus:border-transparent"
               />
               <button
                 onclick="sendMessage()"
                 id="sendButton"
-                class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+                class="bg-custom-purple text-white px-6 py-3 rounded-lg hover:bg-custom-purple-dark focus:outline-none focus:ring-2 focus:ring-custom-purple focus:ring-offset-2 transition-colors"
               >
                 <i class="fas fa-paper-plane"></i>
               </button>
@@ -332,45 +353,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Analyzer Cards Section - MOVED BELOW CHATBOX -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
-        <!-- Retina Analyzer Card -->
-        <div
-          class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-xl shadow-lg p-6 transform hover:scale-105 transition-transform duration-300"
-        >
-          <div class="flex items-center mb-4">
-            <div class="bg-white bg-opacity-20 p-3 rounded-full mr-4">
-              <i class="fas fa-crosshairs text-2xl"></i>
-            </div>
-            <h3 class="text-xl font-bold">Retina Analyzer</h3>
-          </div>
-          <button
-            onclick="showAnalyzerInfo('retina')"
-            class="bg-white text-purple-600 px-4 py-2 rounded-lg font-semibold hover:bg-purple-50 transition-colors w-full"
-          >
-            <i class="fas fa-info-circle mr-2"></i>Know More
-          </button>
-        </div>
-
-        <!-- Eye Analyzer Card -->
-        <div
-          class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl shadow-lg p-6 transform hover:scale-105 transition-transform duration-300"
-        >
-          <div class="flex items-center mb-4">
-            <div class="bg-white bg-opacity-20 p-3 rounded-full mr-4">
-              <i class="fas fa-eye-dropper text-2xl"></i>
-            </div>
-            <h3 class="text-xl font-bold">Eye Analyzer</h3>
-          </div>
-          <button
-            onclick="showAnalyzerInfo('eye')"
-            class="bg-white text-cyan-600 px-4 py-2 rounded-lg font-semibold hover:bg-cyan-50 transition-colors w-full"
-          >
-            <i class="fas fa-info-circle mr-2"></i>Know More
-          </button>
-        </div>
-      </div>
     </div>
 
     <script>
@@ -431,7 +413,7 @@
         } else {
           bubbleDiv.className = `px-4 py-3 rounded-lg max-w-xs lg:max-w-2xl ${
             isUser
-              ? "bg-blue-500 text-white rounded-br-none"
+              ? "bg-custom-purple text-white rounded-br-none"
               : "bg-gray-100 text-gray-800 rounded-bl-none border"
           }`;
         }
@@ -567,7 +549,7 @@
           questionData.options.forEach((option, index) => {
             const button = document.createElement("button");
             button.className =
-              "w-full text-left bg-gray-50 hover:bg-blue-50 border border-gray-200 rounded-lg px-4 py-3 text-sm transition-colors";
+              "w-full text-left bg-gray-50 hover:bg-custom-purple-light border border-gray-200 rounded-lg px-4 py-3 text-sm transition-colors";
             button.textContent = option;
             button.onclick = () => selectSymptomOption(option);
             symptomOptions.appendChild(button);
@@ -725,7 +707,7 @@
 
         try {
           const response = await fetch(
-            "https://visio-ai-backend.onrender.com",
+            "https://visio-ai-backend.onrender.com/api/chat",
             {
               method: "POST",
               headers: {
@@ -818,7 +800,7 @@
       async function startWellnessCheck() {
         try {
           const response = await fetch(
-            "http://127.0.0.1:5000/api/wellness/start"
+            "https://visio-ai-backend.onrender.com/api/wellness/start"
           );
           const data = await response.json();
 
@@ -831,7 +813,7 @@
 
           // Show wellness section
           wellnessSection.classList.remove("hidden");
-          normalChat.classList.add("hidden");
+          normalChat.classList.remove("hidden");
 
           // Display first question
           displayWellnessQuestion(data);
@@ -855,7 +837,7 @@
         data.options.forEach((option, index) => {
           const button = document.createElement("button");
           button.className =
-            "w-full text-left bg-gray-50 hover:bg-blue-50 border border-gray-200 rounded-lg px-4 py-3 text-sm transition-colors";
+            "w-full text-left bg-gray-50 hover:bg-custom-purple-light border border-gray-200 rounded-lg px-4 py-3 text-sm transition-colors";
           button.textContent = option;
           button.onclick = () => selectWellnessOption(option);
           wellnessOptions.appendChild(button);
@@ -865,7 +847,7 @@
       async function selectWellnessOption(selectedOption) {
         try {
           const response = await fetch(
-            "http://127.0.0.1:5000/api/wellness/answer",
+            "https://visio-ai-backend.onrender.com/api/wellness/answer",
             {
               method: "POST",
               headers: {

@@ -8,3 +8,6 @@ also if the user matches with any of these symptoms then also it should predict 
 
 also if incase the user wishes with hello or something similar and then nothing please replay with "Hello how are you doing...." add you own lines . and then proceed 
 
+https://visio-ai-backend.onrender.com -- render backend
+
+http://127.0.0.1:5000/api/chat -- localhost
